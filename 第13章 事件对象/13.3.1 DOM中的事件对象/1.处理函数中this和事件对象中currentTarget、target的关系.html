@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap {
+            width: 500px;
+            height: 500px;
+            background-color: cadetblue;
+        }
+
+        .center {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+
+        .inner {
+            width: 150px;
+            height: 150px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="center">
+        <div class="inner"></div>
+    </div>
+</div>
+
+<script>
+
+//   点击inner元素可以比较效果
+    let wrap = document.querySelector(".wrap");
+    let center = document.querySelector(".center");
+    let inner = document.querySelector(".inner");
+
+    wrap.addEventListener("click", function (event) {
+        console.log(1);
+    }, false);
+
+    center.addEventListener("click", function (event) {
+        console.log(2);
+        console.log('this===event.currentTarget: ',this === event.currentTarget);
+        console.log('this === event.target: ',this === event.target);
+        console.log("currentTarget: ",event.currentTarget)
+        console.log("target: ",event.target)
+    }, false);
+
+    inner.addEventListener("click", function (event) {
+        console.log(3);
+
+    }, false);
+</script>
+</body>
+</html>
+
+<!--
+    事件处理函数中的this和event对象中的currentTarget、target的关系
+    1.this始终等于event.currentTarget
+    2.currentTarget表示事件处理程序所绑定元素对象上
+    3.target表示事件发生时所在的元素
+-->

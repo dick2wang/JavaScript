@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer{
+            width: 500px;
+            height: 500px;
+            background-color: #a4cf59;
+        }
+        .center{
+            width: 300px;
+            height: 300px;
+            background-color: #ffda44;
+        }
+        .inner{
+            width: 150px;
+            height: 150px;
+            background-color: #54caff;
+        }
+    </style>
+</head>
+<body>
+<p>点击元素查看事件位于事件流的那个阶段</p>
+<div class="outer">
+    <div class="center">
+        <div class="inner"></div>
+    </div>
+</div>
+<script>
+    let b1=document.querySelector(".outer")
+    let b2=document.querySelector(".center")
+    let b3=document.querySelector(".inner")
+    
+    function dep(event) {
+        console.log(this,event.eventPhase);
+    }
+    let addHandler=function (e,b=false,f=dep,t="click") {
+        e.addEventListener(t,f,b);
+    }
+
+    addHandler(b3);
+    addHandler(b2,true);
+    addHandler(b1);
+    
+</script>
+</body>
+</html>
+
+<!--
+    事件对象的eventPhase属性，表示调用（触发）事件处理程序时位于事件流的哪个阶段：
+    1表示捕获阶段
+    2表示“处于目标”
+    3表示冒泡阶段
+
+    注意：
+    1.尽管“处于目标”阶段属于冒泡阶段，但是eventPhase仍一直等于2
+    2.如果在某元素上设置捕获阶段触发事件，当事件发生时处于的目标（currentTarget）也是该元素时，仍在“处于目标”阶段触发
+    3.当eventPhase值为2时，this、currentTarget、target始终是相等的
+
+
+-->

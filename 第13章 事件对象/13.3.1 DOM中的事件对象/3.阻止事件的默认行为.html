@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="mylink1">点击默认行为未被取消</a> <br>
+<a href="http://www.baidu.com" id="mylink2">点击默认行为已被取消</a>
+
+<script>
+//    阻止a标签链接的默认行为，如果用l2.onclick=null将无效；
+    let l2=document.getElementById("mylink2");
+    l2.onclick=function (event) {
+        event.preventDefault();
+    };
+</script>
+</body>
+</html>
+
+<!--阻止事件的默认行为可以使用事件对象的preventDefault()函数-，如果cancelable属性为true，则可以使用这个属性->

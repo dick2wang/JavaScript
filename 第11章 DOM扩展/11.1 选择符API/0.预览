@@ -1,0 +1,6 @@
+    为什么要新增querySelector( )和querySelectorAll( )这两个API？
+
+    其实是将类似于jQuery等框架中 “通过‘CSS选择符’查询DOM文档取得元素的引用”的模式
+ 引进为原生的API，从而抛弃了繁琐的getELementById()和getElementsByTagName()方法，并且
+ 在性能上，由于通过原生API代替框架实现“元素查询”功能，解析和树查询操作可以在浏览器内部通
+ 过编译后的代码完成，可以极大地提升了性能。

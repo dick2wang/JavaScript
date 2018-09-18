@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 300px;
+            background-color: #a4cf59;
+        }
+        .center{
+            width: 100px;
+            height: 100px;
+            background-color: #faff6c;
+        }
+    </style>
+</head>
+<body>
+<p>在元素上点击查看颜色</p>
+<div class="wrap">
+    <div class="center"></div>
+</div>
+
+<script>
+    let wrap = document.querySelector(".wrap");
+    let center = document.querySelector(".center");
+    wrap.addEventListener("click", function (event) {
+        alert("green")
+    }, false);
+
+    center.addEventListener("click", function (event) {
+        alert("yellow")
+        event.stopPropagation();
+    }, false);
+</script>
+</body>
+</html>
+
+<!--取消事件的捕获或冒泡可以用stopPropagation()函数，如果bubbles属性为true，则可以使用该方法-->
